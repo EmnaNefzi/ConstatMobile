@@ -1,57 +1,38 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
-import App from '../App';
-import HomePage from './HomePage';
+import { View, TextInput, Button, Alert } from 'react-native';
 
-
-export default function SignupPage (){
-    
+export default function SignupPage() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignUp = () => {
-    console.log('Signing up...');
-    console.log('Username:', username);
-    console.log('Email:', email);
-    console.log('Password:', password);
-
+    if (username.trim() === '' || email.trim() === '' || password.trim() === '') {
+      // Si le nom, l'email ou le mot de passe est vide, affichez une alerte
+      Alert.alert('Erreur', 'Veuillez remplir tous les champs.');
+    } else {
+      // Sinon, naviguez vers la page VehiculeA
+      // Ajoutez ici la logique pour naviguer vers la prochaine page après l'inscription
+    }
   };
 
   return (
-    <View style={{    flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'}}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <TextInput
-        style={{    width: '80%',
-        height: 40,
-        borderWidth: 1,
-        borderColor: 'gray',
-        marginBottom: 20,
-        paddingHorizontal: 10}}
+        style={{ width: '80%', height: 40, borderWidth: 1, borderColor: 'gray', marginBottom: 20, paddingHorizontal: 10 }}
         placeholder="Votre Nom"
         value={username}
         onChangeText={(text) => setUsername(text)}
       />
       <TextInput
-        style={{    width: '80%',
-        height: 40,
-        borderWidth: 1,
-        borderColor: 'gray',
-        marginBottom: 20,
-        paddingHorizontal: 10}}
+        style={{ width: '80%', height: 40, borderWidth: 1, borderColor: 'gray', marginBottom: 20, paddingHorizontal: 10 }}
         placeholder="Votre Email"
         keyboardType="email-address"
         value={email}
         onChangeText={(text) => setEmail(text)}
       />
       <TextInput
-        style={{    width: '80%',
-        height: 40,
-        borderWidth: 1,
-        borderColor: 'gray',
-        marginBottom: 20,
-        paddingHorizontal: 10}}
+        style={{ width: '80%', height: 40, borderWidth: 1, borderColor: 'gray', marginBottom: 20, paddingHorizontal: 10 }}
         placeholder="Votre Mot de passe"
         secureTextEntry
         value={password}
@@ -60,5 +41,4 @@ export default function SignupPage (){
       <Button title="Connecter" onPress={handleSignUp} />
     </View>
   );
-};
-
+}
